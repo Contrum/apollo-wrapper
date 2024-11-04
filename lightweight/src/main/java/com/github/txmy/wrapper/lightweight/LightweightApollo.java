@@ -1,29 +1,41 @@
 package com.github.txmy.wrapper.lightweight;
 
 
+import com.github.txmy.wrapper.Channels;
+import com.github.txmy.wrapper.lightweight.modules.*;
 import com.github.txmy.wrapper.lightweight.utils.PlayerUtils;
-import com.google.gson.JsonObject;
-import org.bukkit.entity.Player;
+import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class LightweightApolloWrapper {
+@Getter
+public class LightweightApollo {
 
+    private final LightweightPlayerManager playerManager;
+    private final LightweightBeamModule beamModule;
+    private final LightweightFireModule fireModule;
+    private final LightweightBorderModule borderModule;
+    private final LightweightChatModule chatModule;
+    private final LightweightCooldownModule cooldownModule;
+    private final LightweightGlowModule glowModule;
 
-
-    private JavaPlugin plugin;
-    private LightweightPlayerManager playerManager;
-
-    public LightweightApolloWrapper(JavaPlugin plugin) {
-        this.plugin = plugin;
+    public LightweightApollo(JavaPlugin plugin) {
         this.playerManager = new LightweightPlayerManager(plugin);
 
-        // this.playerManager.init();
-        plugin.getServer().getMessenger().registerOutgoingPluginChannel(plugin, "apollo:json");
-
         PlayerUtils.setPlugin(plugin);
+
+        this.beamModule = new LightweightBeamModule();
+        this.fireModule = new LightweightFireModule();
+        this.borderModule = new LightweightBorderModule();
+        this.chatModule = new LightweightChatModule();
+        this.cooldownModule = new LightweightCooldownModule();
+        this.glowModule = new LightweightGlowModule();
+
+        plugin.getServer().getMessenger().registerOutgoingPluginChannel(plugin, Channels.PLAYER_LIGHTWEIGHT_CHANNEL);
+        plugin.getServer().getMessenger().registerIncomingPluginChannel(plugin, Channels.PLAYER_LIGHTWEIGHT_CHANNEL, (s, player, bytes) -> {
+        });
+        plugin.getServer().getMessenger().registerIncomingPluginChannel(plugin, Channels.PLAYER_DETECTION_CHANNEL, (s, player, bytes) -> {
+        });
     }
 
-    public void send(Player player, JsonObject object) {
-        player.sendPluginMessage(plugin, "apollo:json", object.toString().getBytes());
-    }
+
 }

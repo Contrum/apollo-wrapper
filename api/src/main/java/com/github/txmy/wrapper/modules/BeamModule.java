@@ -1,9 +1,18 @@
 package com.github.txmy.wrapper.modules;
-/*
- * This file is part of the apollo-wrapper project.
- * Copyright (c) 2022-2024. Contrum Services
- * Created by txmydev on 24/10/2024
- * Website: contrum.org
-*/
-public interface BeanModule {
+
+import com.github.txmy.wrapper.errors.InvalidMinecraftClient;
+
+import java.util.UUID;
+
+
+public interface BeamModule<T,J> {
+
+    void displayBeam(T player, J beam) ;
+    void resetBeams(T player) ;
+    void resetBeam(T player, String id) ;
+
+    void displayBeam(UUID uniqueId, J beam) ;
+    void resetBeams(UUID uniqueId) ;
+    void resetBeam(UUID uniqueId, String id) ;
+
 }

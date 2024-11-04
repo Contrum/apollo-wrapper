@@ -1,9 +1,19 @@
 package com.github.txmy.wrapper.modules;
-/*
- * This file is part of the apollo-wrapper project.
- * Copyright (c) 2022-2024. Contrum Services
- * Created by txmydev on 24/10/2024
- * Website: contrum.org
-*/
-public interface CooldownModule {
+
+import com.github.txmy.wrapper.errors.InvalidMinecraftClient;
+
+import java.util.UUID;
+
+
+public interface CooldownModule<T,J> {
+
+    void displayCooldown(T player, J cooldown) ;
+    void resetCooldown(T player, String name) ;
+    void resetCooldowns(T player) ;
+
+    void displayCooldown(UUID uniqueId, J cooldown) ;
+    void resetCooldown(UUID uniqueId, String name) ;
+    void resetCooldowns(UUID uniqueId) ;
+
+
 }

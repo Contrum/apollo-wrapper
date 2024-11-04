@@ -1,2 +1,5 @@
 rootProject.name = 'apollo-wrapper'
+include 'lightweight'
+include 'api'
+include 'example'
 

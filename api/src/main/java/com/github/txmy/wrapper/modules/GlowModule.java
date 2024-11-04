@@ -1,12 +1,16 @@
 package com.github.txmy.wrapper.modules;
 
-/*
- * This file is part of the apollo-wrapper project.
- * Copyright (c) 2022-2024. Contrum Services
- * Created by txmydev on 24/10/2024
- * Website: contrum.org
- */
-public interface GlintModule<T,J> {
+import java.util.UUID;
 
-    
+
+public interface GlowModule<T, J> {
+
+    void displayGlow(Iterable<? extends T> viewers, T player, J color);
+
+    void resetGlow(Iterable<? extends T> viewers, T player);
+
+    void displayGlow(Iterable<? extends T> viewers, UUID uniqueId, J color);
+
+    void resetGlow(Iterable<? extends T> viewers, UUID uniqueId);
+
 }

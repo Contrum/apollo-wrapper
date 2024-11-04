@@ -1,9 +1,19 @@
 package com.github.txmy.wrapper.modules;
-/*
- * This file is part of the apollo-wrapper project.
- * Copyright (c) 2022-2024. Contrum Services
- * Created by txmydev on 24/10/2024
- * Website: contrum.org
-*/
-public interface FireModule {
+
+import java.awt.*;
+import java.util.Collection;
+import java.util.UUID;
+
+
+public interface FireModule<T> {
+
+    void changeFireColor(Collection<T> viewers, T player, Color color);
+
+    void resetFireColor(Collection<T> viewers, T player);
+
+    void changeFireColor(Collection<T> viewers, UUID uniqueId, Color color);
+
+    void resetFireColor(Collection<T> viewers, UUID uniqueId);
+
+    void resetFireForEveryone(Collection<T> viewers);
 }

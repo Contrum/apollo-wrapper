@@ -1,0 +1,4 @@
+main: com.github.txmy.apollo.wrapper.ExamplePlugin
+name: "ApolloWrapperExample"
+version: -DEV
+description: "Just some examples for using my simple api."

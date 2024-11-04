@@ -1,9 +1,15 @@
 package com.github.txmy.wrapper.modules;
-/*
- * This file is part of the apollo-wrapper project.
- * Copyright (c) 2022-2024. Contrum Services
- * Created by txmydev on 24/10/2024
- * Website: contrum.org
-*/
-public interface NotificationModule {
+
+import com.github.txmy.wrapper.errors.InvalidMinecraftClient;
+
+import java.util.UUID;
+
+
+public interface NotificationModule<T,J>{
+
+    void displayNotification(T player, J notification) ;
+    void resetNotifications(T player) ;
+
+    void displayNotifications(UUID uniqueId, J notification) ;
+    void resetNotifications(UUID uniqueId) ;
 }

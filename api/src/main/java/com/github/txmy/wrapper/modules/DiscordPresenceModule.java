@@ -1,9 +1,15 @@
 package com.github.txmy.wrapper.modules;
-/*
- * This file is part of the apollo-wrapper project.
- * Copyright (c) 2022-2024. Contrum Services
- * Created by txmydev on 24/10/2024
- * Website: contrum.org
-*/
-public interface DiscordPresenceModule {
+
+import com.github.txmy.wrapper.errors.InvalidMinecraftClient;
+
+import java.util.UUID;
+
+
+public interface DiscordPresenceModule<T,J> {
+
+    void sendServerRichPresence(T player, J presence) ;
+    void resetServerRichPresence(T player) ;
+
+    void sendServerRichPresence(UUID uniqueId, J presence) ;
+    void resetServerRichPresence(UUID uniqueId) ;
 }

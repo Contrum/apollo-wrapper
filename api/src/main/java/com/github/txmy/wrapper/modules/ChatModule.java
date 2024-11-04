@@ -1,9 +1,16 @@
 package com.github.txmy.wrapper.modules;
-/*
- * This file is part of the apollo-wrapper project.
- * Copyright (c) 2022-2024. Contrum Services
- * Created by txmydev on 24/10/2024
- * Website: contrum.org
-*/
-public interface ChatModule {
+
+import com.github.txmy.wrapper.errors.InvalidMinecraftClient;
+
+import java.util.UUID;
+
+
+public interface ChatModule<T,J> {
+
+    void displayLiveChatMessage(T player, J message) ;
+    void removeLiveChatMessage(T player, int messageId) ;
+
+    void displayLiveChatMessage(UUID uniqueId, J message) ;
+    void removeLiveChatMessage(UUID uniqueId, int messageId) ;
+
 }

@@ -1,9 +1,22 @@
 package com.github.txmy.wrapper.modules;
-/*
- * This file is part of the apollo-wrapper project.
- * Copyright (c) 2022-2024. Contrum Services
- * Created by txmydev on 24/10/2024
- * Website: contrum.org
-*/
-public interface NametagModule {
+
+import com.github.txmy.wrapper.errors.InvalidMinecraftClient;
+
+import java.util.Set;
+import java.util.UUID;
+
+
+public interface NametagModule<T,J>{
+
+    void displayNametag(Set<T> viewers, T player, J nametag) ;
+    void displayNametag(T player, J nametag) ;
+    void resetNametag(Set<T> viewers, T player) ;
+    void resetNametag(T player) ;
+
+    void displayNametag(Set<T> viewers, UUID uniqueId, J nametag) ;
+    void displayNametag(UUID uniqueId, J nametag) ;
+    void resetNametag(Set<T> viewers, UUID uniqueId) ;
+    void resetNametag(UUID uniqueId) ;
+
+
 }

@@ -1,9 +1,19 @@
 package com.github.txmy.wrapper.player;
-/*
- * This file is part of the apollo-wrapper project.
- * Copyright (c) 2022-2024. Contrum Services
- * Created by txmydev on 24/10/2024
- * Website: contrum.org
-*/
-public interface PlayerManager {
+
+import java.util.UUID;
+import java.util.function.Consumer;
+
+
+public interface PlayerManager<T> {
+
+    String METADATA_KEY = "apw_lunar";
+
+    boolean isRunningClient(UUID uniqueId);
+    boolean isRunningClient(T player);
+
+    void perform(UUID uniqueId, Consumer<T> consumer);
+    void performForEveryone(Consumer<T> consumer);
+
+    void initPlayer(T player);
+
 }
